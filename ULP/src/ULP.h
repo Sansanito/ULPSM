@@ -33,7 +33,7 @@ class ULP {
 
     ULP (int a, int b, float c);
 
-    int getTemp(int n, char* U = "C");
+    float getTemp(int n, char* U = "C");
 
 	float getConc(int n, float t = 20);
     
