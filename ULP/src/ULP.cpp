@@ -29,7 +29,7 @@ ULP::ULP (int a, int b, float c) : _CPin(a), _TPin(b), _Sf(c) {
 float ULP::_Vcc = 5.0; 	//voltage for ADC conversion of analogRead()	
 float ULP::_Vsup = 3.3;	//voltage of ULP supply for thermister, etc.
 
-int  ULP::getTemp(int n, char* U) { //get temperature using n as time in seconds for averaging, and U for units "F"/"C"
+float  ULP::getTemp(int n, char* U) { //get temperature using n as time in seconds for averaging, and U for units "F"/"C"
   unsigned long etime, i = 0;
   unsigned long AC = 0;
   float temp;
@@ -50,12 +50,12 @@ int  ULP::getTemp(int n, char* U) { //get temperature using n as time in seconds
   temp = (_Ts / _Vsup) * Volts - _Tb;
 
   if (U == "F") {
-    return temp * 9 / 5 + 32;
+    return temp * 9.0 / 5.0 + 32.0;
   }
   else if ( U == "C") {
     return temp;
   }
-  else return 0;
+  else return 0.0;
 }
 
 void ULP::setTSpan(float t, String R) { //advanced function for setting high or low calibration factor for thermistor
